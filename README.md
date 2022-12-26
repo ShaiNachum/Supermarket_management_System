@@ -33,14 +33,20 @@
       structure as learned in the object-oriented programming course.
       
 * In the first part of the project we were asked to do the following:
-    * Create Address struct with the fieldes:
+    * Create _Address_ struct with the fieldes:
       - House number.
       - Dynamic string for street, can be made with several words and in unknown size
       - Dynamic string for city, can be made with several words and in unknown size.
       
     * Create _Product_ struct with the fieldes:
     
-    * 
+    * Create _Customer_ struct with the fieldes:
+    
+    * Create _ShoppingItem_ struct with the fieldes:
+    
+    * Create _ShoppingCart_ struct with the fieldes:
+    
+    * Create _SuperMarket_ struct with the fieldes:
     
 
 
