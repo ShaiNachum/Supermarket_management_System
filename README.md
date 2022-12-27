@@ -32,7 +32,7 @@
       will be explained later while thinking correctly about a proper software 
       structure as learned in the object-oriented programming course.
       
-* In the first part of the project we were asked to do the following:
+## In the first part of the project we were asked to do the following:
     * Create _Address_ struct with the fieldes:
     	- House number.
     	- Dynamic string for street, can be made with several words and in unknown size
@@ -111,6 +111,31 @@
     	- Input correctness checks must be observed.
     	- Const pointers must be used when the function does not change values in the pointer.
     	- You must make sure that the product barcode is unique at the time of receipt.
+
+## In the second part of the project we were asked to do the following:
+    * Linked lists:
     
+    * Supermarket:
+    
+    * Binary files:
+    
+    * Text files:
+    
+    * Pointers to functions:
+    
+    * Changes in main:
+    
+
+
+
+
+
+
+
+
+
+
+
+
 
   
