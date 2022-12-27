@@ -1,4 +1,4 @@
-# Supermarket_management_System
+# Supermarket_Management_System
 
 ## This project made during my "introduction to operating systems" course.
 
