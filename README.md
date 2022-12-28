@@ -3,24 +3,24 @@
 ## This project made during my "introduction to operating systems" course.
 
 ### Subject that this project deal with:
-    * Data types and Conversion.
-    * Variables and constants.
-    * Functions. 
-    * Random Number.
-    * Standard Libraries.
-    * Pointers and pointers arithmetics.
-    * Strings.
-    * Structures.
-    * Union & enum.
-    * Dynamic allocations.
-    * Pointer to functions.
-    * Binary Files + text file
-    * Bitwise operators.
-    * Bit fields in structures.
-    * Linked lists.
-    * Macros.
-    * Parameters to main.
-    * Variadic functions.
+   * Data types and Conversion.
+   * Variables and constants.
+   * Functions. 
+   * Random Number.
+   * Standard Libraries.
+   * Pointers and pointers arithmetics.
+   * Strings.
+   * Structures.
+   * Union & enum.
+   * Dynamic allocations.
+   * Pointer to functions.
+   * Binary Files + text file
+   * Bitwise operators.
+   * Bit fields in structures.
+   * Linked lists.
+   * Macros.
+   * Parameters to main.
+   * Variadic functions.
     
 ## Project explenation:
 
@@ -33,6 +33,7 @@
       structure as learned in the object-oriented programming course.
       
 ## In the first part of the project we were asked to do the following:
+
    * Create **Address** struct with the fieldes:
     	- House number.
     	- Dynamic string for street, can be made with several words and in unknown size
@@ -88,7 +89,7 @@
 			   If there is only one word in the name it will end with a capital letter.
     		3. There must not be a space at the beginning and end of the input.
     	
-	![image](https://user-images.githubusercontent.com/100000990/209677673-d11a4dc2-3ab2-4ecf-8f37-fe6ee70c5f76.png)
+![image](https://user-images.githubusercontent.com/100000990/209677673-d11a4dc2-3ab2-4ecf-8f37-fe6ee70c5f76.png)
 
    * Buying process:
     	- Only one customer at a time makes a purchase at the food store.
@@ -127,16 +128,75 @@
 
 ## In the second part of the project we were asked to do the following:
    * Linked lists:
+   	    - Given a code of a one-way linked list that stores an int data. Update it so that it is general, that is, the Node
+   	      stores a value of type void*.
+	    - Required functions:
+			1. List initialization.
+			2. Adding to the list.
+			3. Deleting a member from the list - create a general function that supports the situation in which the value in
+			   Node must be released and the situation in which it is not necessary to release this value.
+			4. Free list.
+			5. Print list.
+		- We will change the structure of the shopping cart, **ShoppingCart**, so that it holds the various ShoppingItem as a
+		  linked list that stores ShoppingItem*. Make sure that the products are sorted by name. The existing array and the
+		  count variable must be deleted.
+		- Do not sort the list at any stage but insert the member in the right place for it, do not use an auxiliary 
+		  structure of any kind!
     
    * Supermarket:
+	    - The food company allows you to sort its array of products according to the following fields:
+			1. Name.
+			2. Barcode.
+			3. Type.
+			4. Price.
+		- In order for us to know by which field the products are sorted, we will add an appropriate attribute to the food 
+		  company (enum) that will also contain the option that the array is not sorted.
+		  (In the beginning, the array of products is not sorted at all).
+		- The **qsort** function from **stdlib** must be used to perform the sorting.
+		- A product search capability must be added in the array of the food company's products according to the parameter 
+		  according to which they are sorted, the library function binary search must be used: **bsearch**, if the array is
+		  not sorted, the user must be informed that a search cannot be performed.
     
    * Binary files:
+   		- The food company saves all its data except the list of customers in a binary file, the file will be saved under the
+   		  name - "SuperMarket.bin".
+		- Each string will be saved in the following format: (it's also not a dynamic string like in the product)
+			1. A number that represents the number of characters in the string including '\0'
+			2. The string itself.
+		
+		- The format of writing the products in the file:
+		
+		![image](https://user-images.githubusercontent.com/100000990/209821982-5f036aef-95f5-4c73-ace6-e2beb8a7fc0f.png)
+
     
    * Text files:
-    
+   		- The food company saves the customer data in a text file named "txt.Customers".
+   		- The format of writing the customers in a text file:
+   		
+		![image](https://user-images.githubusercontent.com/100000990/209822389-80b7497c-1167-40b2-b24c-6c31a6277bd7.png)
+
    * Pointers to functions:
+   		- A generic function that handles the array must be prepared: *generalArrayFunction*.
+   		  void f(void* element);
+		  The function will receive an array, the number of elements in the array, the size of each element in bytes,
+		  as well as a pointer to the function.
+		- The function *generalArrayFunction* goes through all the elements of the array one by one and sends the address
+		  of the element to the function f.
+		- This function should be activated in the following cases:
+			1. Printing the array of products.
+			2. Printing the customer array.
+			3. Free the allocation of the customers.
+		
    
    * Changes in main:
+   		At the beginning of the program, we will initialize the system by loading the food company from the appropriate files.
+		If the loading of any data from the file was not successful, we will reboot the food company from the user as was done
+		in the first part of the project.
+		
+   * We will add several options to the main menu:
+   		- Sort products according to a given attribute in ascending order (internal menu according to the enum values).
+   		- Product search in the food company according to the attribute in which the array is sorted.
+   		- When exiting the program, the food company data must be saved to the appropriate files.
     
 
 
