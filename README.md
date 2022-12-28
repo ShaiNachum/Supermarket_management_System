@@ -33,12 +33,12 @@
       structure as learned in the object-oriented programming course.
       
 ## In the first part of the project we were asked to do the following:
-    * Create **Address** struct with the fieldes:
+   * Create **Address** struct with the fieldes:
     	- House number.
     	- Dynamic string for street, can be made with several words and in unknown size
     	- Dynamic string for city, can be made with several words and in unknown size.
       
-    * Create **Product** struct with the fieldes:
+   * Create **Product** struct with the fieldes:
     	- Name, string with constant size of 20 chars or less.
     	- Barcode, string with constant size of exactly 7 chars, must include only capital latters and digits, with
 		  at least 3 digits and no more than 5.
@@ -46,22 +46,22 @@
     	- Price, float.
     	- Units in Stock. 
     
-    * Create **Customer** struct with the fieldes:
+   * Create **Customer** struct with the fieldes:
     	- Customer name, a dynamic string with unknown size.
     
-    * Create **ShoppingItem** struct with the fieldes:
+   * Create **ShoppingItem** struct with the fieldes:
     	- Name, a dynamic string.
     	- price, float.
     	- The amount in the shopping cart of this product.
     
-    * Create **ShoppingCart** struct with the fieldes:
+   * Create **ShoppingCart** struct with the fieldes:
     	- An array of unknown size. In each cell in the array there is a pointer to **ShoppingItem**.
     	- The amount of different products in the shopping cart.
     	- Functions that receive arguments as i wish that:
     		1. Calculation of the total amount to be paid for the shopping cart.
     		2. Adding a product to the shopping cart.  
     
-    * Create **SuperMarket** struct with the fieldes:
+   * Create **SuperMarket** struct with the fieldes:
     	- Store name, dynamic string with unknown size.
     	- Store address, Later it will be explained how the address is received from the user.
     	- Array of customers, an array of unknown size. Each cell in the array has a customer.
@@ -77,19 +77,20 @@
     		5. Buying in a supermarket, the process will be explained later.
     		6. Printing all products in a supermarket of a certain type according to the user's choice.
     		
-    * Receiving the grocery store address:
+   * Receiving the grocery store address:
     	- The address data must be requested from the user as a long string. You can temporarily assume in the function which 
 		  perceives that the entire string is no longer than 254 characters. The fields will be in the following 
 		  order: street, house number, city. Between each field of the structure will appear in the string the character '!'.
     	- After the reception, the city and street data must be changed as follows:
     		1. If a data consists of several words, add the character # between the words.
-    		2. In each input, the first letter in each word will be a capital letter and the rest of the letters will be lowercase.
+    		2. In each input, the first letter in each word will be a capital letter and the rest of the letters will be
+			   lowercase.
 			   If there is only one word in the name it will end with a capital letter.
     		3. There must not be a space at the beginning and end of the input.
     	
 	![image](https://user-images.githubusercontent.com/100000990/209677673-d11a4dc2-3ab2-4ecf-8f37-fe6ee70c5f76.png)
 
-    * Buying process:
+   * Buying process:
     	- Only one customer at a time makes a purchase at the food store.
     	- The user will enter the name of the customer who starts making a purchase. Make sure he is a registered customer.
     	- For convenience we will print all the products available in the supermarket.
@@ -105,7 +106,7 @@
 		  has to pay.
     	- After payment (printing to the screen) - all allocations created during the purchase must be released.
     
-    * The main program:
+   * The main program:
     	- After the initial boot, a menu should be displayed that allows the following actions:
     		1. Printing the grocery store data.
     		2. Adding a product.
@@ -114,10 +115,10 @@
     		5. Printing all existing products in the store of a certain type.
     		6. Exit the program. Be sure to free any dynamically allocated memory.
 
-    * In the main function there will be no logic and variable definition except for the food store, only reading to main
+   * In the main function there will be no logic and variable definition except for the food store, only reading to main
 	  functions and printing an error output if it occurs.
     
-    * General demands:
+   * General demands:
     	- The length of all strings is unknown unless a specific length is specified. Temporarily for the purpose of receiving
 		  a string from the user within a specific function, a string of 255 characters can be defined.
     	- Input correctness checks must be observed.
@@ -125,17 +126,17 @@
     	- You must make sure that the product barcode is unique at the time of receipt.
 
 ## In the second part of the project we were asked to do the following:
-    * Linked lists:
+   * Linked lists:
     
-    * Supermarket:
+   * Supermarket:
     
-    * Binary files:
+   * Binary files:
     
-    * Text files:
+   * Text files:
     
-    * Pointers to functions:
-    
-    * Changes in main:
+   * Pointers to functions:
+   
+   * Changes in main:
     
 
 
