@@ -163,7 +163,6 @@
 		- Each string will be saved in the following format: (it's also not a dynamic string like in the product)
 			1. A number that represents the number of characters in the string including '\0'
 			2. The string itself.
-		
 		- The format of writing the products in the file:
 		
 		![image](https://user-images.githubusercontent.com/100000990/209821982-5f036aef-95f5-4c73-ace6-e2beb8a7fc0f.png)
@@ -189,14 +188,100 @@
 		
    
    * Changes in main:
-   		At the beginning of the program, we will initialize the system by loading the food company from the appropriate files.
-		If the loading of any data from the file was not successful, we will reboot the food company from the user as was done
-		in the first part of the project.
+   		- At the beginning of the program, we will initialize the system by loading the food company from the appropriate files.
+		  If the loading of any data from the file was not successful, we will reboot the food company from the user as was done
+		  in the first part of the project.
 		
    * We will add several options to the main menu:
    		- Sort products according to a given attribute in ascending order (internal menu according to the enum values).
    		- Product search in the food company according to the attribute in which the array is sorted.
    		- When exiting the program, the food company data must be saved to the appropriate files.
+
+
+## In the third part of the project we were asked to do the following:
+   *  Bits and parameters to main:
+   		- We will make it possible to save the food company's data in an efficient way in a binary file by bit compression.
+		- The main function will receive the following data as a parameter:
+			1. Do you work with a compressed file? 1 yes 0 no.
+			2. What is the name of the file that will be in a suitable format according to the received flag.
+		- The functions that perform operations on the food company file must be changed so that they receive the name of the 
+		  file and whether they work with a compressed file or not.
+		- Compressed file "bin.compress_super" is attached.
+		- The structure of the compressed file:
+			1. All saving strings will change. We will save the string without '\0' and the saved length will be accordingly.
+			2. Let's make the following assumptions about the food company:
+				* In the first two bytes they will keep: 																										
+					1. Quantity of products: maximum 511 (9 bits are enough).																						
+					2. Sorting: maximum 5 options 0 to 4 (3 bits are enough).																						
+					3. The length of the company name: should not exceed 15 characters - the length is 4 bits.														
+		
+				![image](https://user-images.githubusercontent.com/100000990/209826401-919d6ff8-8d50-48bb-bfcc-86350b279021.png)									
+				
+				* The name of the food company character by character.
+				* Address, in two bytes: 
+					1. The maximum house number is 127 (7 bits).
+					2. The length of the city name: should not exceed 15 characters - the length is 4 bits.
+					3. The length of the street name: shall not exceed 31 characters - the length is 5 bits.
+				
+				![image](https://user-images.githubusercontent.com/100000990/209827388-b6a77c97-85bc-4046-9acd-3d6465fd0654.png)
+				
+				* The name of the city, character by character.
+				* Street name, character by character.
+				* **Data of each product:**, Each product according to the following format:
+					1. Product name should not exceed 15 characters (4 bits).
+					2. Product type: There are 4 options (2 bits).
+					3. Barcode: can contain numbers and capital letters, there are 36 different options (10 numbers and 26
+					   letters, therefore 6 bits will be enough for each character and there are 7 characters). 0 to 9 for the 
+					   number, 10 for 'A' and 35 for 'Z'.
+				* A total of 48 bits - 6 bytes (3 bytes can be read each time) according to the following order:
+				
+				![image](https://user-images.githubusercontent.com/100000990/209828332-265d4956-784d-4d5b-9d3b-33da41ba523b.png)
+				
+				* Product name, character by character.
+				* Quantity and price:
+					1. Quantity let's say up to 63 items (6 bits).
+					2. Price We will list the whole separately and the pennies separately.
+						* Pennies - up to 99 - 7 Bits (exactly up to a penny!).
+						* Whole - up to 2047 - 11 Bits.
+				* A total of 24 bits – 3 bytes in the following order:
+				
+				![image](https://user-images.githubusercontent.com/100000990/209829003-c872cf6d-9f64-42db-bd3d-76d802b9ec21.png)
+				
+   *  Macros:
+   		- A conditional compilation constant PRINT_DETAIL must be defined that affects the way a product is printed to the screen.
+   		   When the constant is not set when printing a product, only the name will be printed without a barcode. When the constant
+		   is set, all product data will be printed. (The row of column titles should also be changed accordingly).
+		- Create an additional **h.myMacros** file and define in it macros that replace the code sections in the project:
+			1. *CHECK_RETURN_0* - check pointer - in case of NULL return 0.
+			2. *CHECK_RETURN_NULL* - check pointer - in case of NULL return NULL.
+			3. *NULL_RETURN_MSG_CHECK8 - check pointer - in case of NULL, print messaege , return NULL.
+			4. *CHECK_NULL_MSG_FREE_CLOSE_FILE_RETURN_0* - Checking if a value is NULL, if so release the pointer, print a message,
+			   close the file and return 0.
+			5. *CHECK_NULL_COLSE_FILE_RETURN_0* - Checking if a value is NULL, if so close the file and return 0.
+		- Macros must be used in the appropriate places:
+			1. *CHECK_RETRUN_0* in **SuperMarket.c** when allocation check, twice.
+			2. *CHECK_RETURN_NULL* in *getDynStr* function.
+			3. *CHECK_MSG_RETURN_NULL* in *readStringFromFile* function.
+			4. *CHECK_NULL_MSG_FREE_CLOSE_FILE_RETURN_0* in two places in reading from a file when the allocation was not successful.
+			5. *CHECK_NULL_CLOSE_FILE_RETURN_0* at least in two places reading supermarket data from a file.
+	
+   *  Variadic:
+   		- The following function must be implemented:
+   			
+		![image](https://user-images.githubusercontent.com/100000990/209831936-a43b809d-6b91-4f56-bcf8-9c21e02dbe5f.png)
+		
+		- The function accepts an unknown amount of strings. The string list will be terminated by the NULL parameter.
+		  The function prints the strings one by one with a space between the words.
+		- In main before exiting the program instead of "bye bye" call the printMessage function as follows:
+		
+		![image](https://user-images.githubusercontent.com/100000990/209832288-c6d44471-82af-45d8-886e-9ac218fc8126.png)
+
+
+
+
+
+
+				
     
 
 
